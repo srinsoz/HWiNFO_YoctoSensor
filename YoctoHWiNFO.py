@@ -144,9 +144,13 @@ def main():
         prog='YoctoHWiNFO',
         description='Publish Yoctopuce sensors to HWiNFO software.'
     )
-    parser.add_argument('-r', '--remote_hub', action='store', default='usb')
-    parser.add_argument('--use_HKEY_LOCAL_MACHINE', action='store_true', default=False)
-    parser.add_argument('-v', '--verbose', type=int, choices=range(0, 2), default=0)
+    parser.add_argument('-r', '--remote_hub', action='store', default='usb',
+                        help='Uses remote IP devices (or VirtalHub), instead of local USB.')
+    parser.add_argument('--use_HKEY_LOCAL_MACHINE', action='store_true', default=False,
+                        help='Use HKEY_LOCAL_MACHINE instead of HKEY_CURRENT_USER for HWiNFO custom sensors.'
+                        )
+    parser.add_argument('-v', '--verbose', type=int, choices=range(0, 2), default=0,
+                        help='Verbose level: 0=silent, 1=verbose, 2=debug.')
     args = parser.parse_args()
     if args.verbose > 0:
         logfun('Verbose mode')
