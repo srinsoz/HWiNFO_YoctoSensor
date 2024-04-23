@@ -92,7 +92,7 @@ class HWiNFO_dev:
             except WindowsError as e:
                 print(e)
                 sys.exit("unable to create key %s" % self.dev_key_path)
-
+            print("Sensor %s registred" % hwid)
             HWiNfo_sensor = CustomHWiNFOsensor(hwid, self.dev_key_path, hwinfo_sensor_type, index, self.key,
                                                verbose=self.verbose)
             self.hwinfo_sensors[hwinfo_sensor_type][hwid] = HWiNfo_sensor
@@ -146,14 +146,15 @@ def main():
     )
     parser.add_argument('-r', '--remote_hub', action='store', default='usb')
     parser.add_argument('--use_HKEY_LOCAL_MACHINE', action='store_true', default=False)
-    parser.add_argument('-v', '--verbose', type=int, choices=range(0, 2))
+    parser.add_argument('-v', '--verbose', type=int, choices=range(0, 2), default=0)
     args = parser.parse_args()
     if args.verbose > 0:
         logfun('Verbose mode')
-        logfun('RegisterHub %s' % args.remote_hub)
+        logfun("Using Yoctopuce lib v%s"% YAPI.GetAPIVersion())
         YAPI.RegisterLogFunction(logfun)
     errmsg = YRefParam()
     # Setup the API to use local USB devices
+    logfun('RegisterHub %s' % args.remote_hub)
     res = YAPI.RegisterHub(args.remote_hub, errmsg)
     if res == YAPI.DOUBLE_ACCES:
         print("USB access is already locked. Fallback to 127.0.0.1")
