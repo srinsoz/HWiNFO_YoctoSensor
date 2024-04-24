@@ -1,13 +1,10 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import argparse
 import winreg
 from yoctopuce.yocto_api import *
 
 REG_PATH = "Software\\HWiNFO64\\Sensors\\Custom"
-
-
-def functionValueChangeCallback(fct, value):
-    info = fct.get_userData()
-    # print(info['hwId'] + ": " + value + " " + info['unit'] + " (new value)")
 
 
 class CustomHWiNFOsensor:
@@ -53,7 +50,7 @@ class CustomHWiNFOsensor:
 
 
 class HWiNFO_dev:
-    def __init__(self, module: YModule, key, verbose=0):
+    def __init__(self, module, key, verbose=0):
         self.dev_name = module.get_friendlyName()
         self.key = key
         self.verbose = verbose
@@ -92,7 +89,7 @@ class HWiNFO_dev:
             except WindowsError as e:
                 print(e)
                 sys.exit("unable to create key %s" % self.dev_key_path)
-            print("Sensor %s registred" % hwid)
+            print("Sensor %s added." % hwid)
             HWiNfo_sensor = CustomHWiNFOsensor(hwid, self.dev_key_path, hwinfo_sensor_type, index, self.key,
                                                verbose=self.verbose)
             self.hwinfo_sensors[hwinfo_sensor_type][hwid] = HWiNfo_sensor

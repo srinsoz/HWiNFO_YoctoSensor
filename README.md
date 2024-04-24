@@ -2,7 +2,8 @@
 
 This is a small script that will publish all Yoctopuce sensors on [HWiNFO application](https://www.hwinfo.com/) software.
 It use the [Yoctopuce Python library](https://github.com/yoctopuce/yoctolib_python) to detect to Yoctopuce devices and 
-create the correcsponding [HWiNFO custom user sensors](https://www.hwinfo.com/forum/threads/custom-user-sensors-in-hwinfo.5817/)
+create the corresponding [HWiNFO custom user sensors](https://www.hwinfo.com/forum/threads/custom-user-sensors-in-hwinfo.5817/)
+
 
 ## Options
 ````
@@ -14,3 +15,13 @@ create the correcsponding [HWiNFO custom user sensors](https://www.hwinfo.com/fo
 -v {0,1}, --verbose {0,1}
                     Verbose level: 0=silent, 1=verbose, 2=debug.
 ````
+
+
+## Installation
+
+This script use Yoctopuce python library which can be installed with pip:
+
+````
+pip install yoctopuce
+````
+
