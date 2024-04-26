@@ -4,6 +4,7 @@ This is a small script that will publish all Yoctopuce sensors on [HWiNFO applic
 It use the [Yoctopuce Python library](https://github.com/yoctopuce/yoctolib_python) to detect to Yoctopuce devices and 
 create the corresponding [HWiNFO custom user sensors](https://www.hwinfo.com/forum/threads/custom-user-sensors-in-hwinfo.5817/)
 
+You can get more information on our web site: https://www.yoctopuce.com/EN/article/using-yoctopuce-sensors-in-hwinfo
 
 ## Options
 ````
